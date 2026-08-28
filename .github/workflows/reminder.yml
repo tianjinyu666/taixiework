@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: 发送企业微信提醒
         run: |
-          curl -X POST '你的Webhook地址' \
+          curl -X POST 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=fd00d230-d4d8-4367-a1f6-209170bb1121' \
             -H 'Content-Type: application/json' \
             -d '{
               "msgtype": "text",
