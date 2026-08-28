@@ -1,6 +1,7 @@
 name: 钛屑转运提醒
 
 on:
+   workflow_dispatch:
   schedule:
     # 北京时间 23:30 = UTC 15:30
     - cron: '0 1 * * *'
