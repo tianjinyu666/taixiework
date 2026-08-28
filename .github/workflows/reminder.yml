@@ -1,0 +1,27 @@
+name: 钛屑转运提醒
+
+on:
+  schedule:
+    # 北京时间 23:30 = UTC 15:30
+    - cron: '0 1 * * *'
+    # 北京时间 23:33 = UTC 15:33
+    - cron: '0 3 * * *'
+    # 北京时间 23:35 = UTC 15:35
+    - cron: '0 5 * * *'
+    # 北京时间 23:37 = UTC 15:37
+    - cron: '0 7 * * *'
+
+jobs:
+  send-message:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 发送企业微信提醒
+        run: |
+          curl -X POST 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=fd00d230-d4d8-4367-a1f6-209170bb1121' \
+            -H 'Content-Type: application/json' \
+            -d '{
+              "msgtype": "text",
+              "text": {
+                "content": "今日是否有转运钛屑？如已转运请在群内回复"已转运""
+              }
+            }'
